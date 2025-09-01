@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS autor(
     nombre_autor VARCHAR(100) NOT NULL,
     pseudonimo VARCHAR(100) NULL,
     id_nacionalidad INT NULL,
-    habilitado TINYINT DEFAULT = 1,
+    habilitado TINYINT DEFAULT 1,
     CONSTRAINT pk_autor PRIMARY KEY (id_autor),
     CONSTRAINT fk_autor_nacionalidad FOREIGN KEY (id_nacionalidad) REFERENCES nacionalidad(id_nacionalidad)
 );
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS biblioteca(
     id_biblioteca INT NOT NULL AUTO_INCREMENT,
     nombre_biblio VARCHAR(100) NOT NULL,
     id_direccion INT NOT NULL,
-    habilitado TINYINT DEFAULT = 1,
+    habilitado TINYINT DEFAULT 1,
     CONSTRAINT pk_biblioteca PRIMARY KEY (id_biblioteca),
     CONSTRAINT fk_biblioteca_direccion FOREIGN KEY (id_direccion) REFERENCES direccion(id_direccion)
 );
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS libro(
     paginas INT NOT NULL,
     copias_libro INT NOT NULL,
     id_biblioteca INT NOT NULL,
-    habilitado_libro TINYINT DEFAULT = 1,
+    habilitado_libro TINYINT DEFAULT 1,
     id_categoria INT NOT NULL,
     CONSTRAINT pk_libro PRIMARY KEY (id_libro),
     CONSTRAINT fk_libro_biblioteca FOREIGN KEY (id_biblioteca) REFERENCES biblioteca(id_biblioteca),
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS lector(
     telefono_lector VARCHAR(15) NOT NULL,
     id_direccion INT NOT NULL,
     id_biblioteca INT NOT NULL,
-    habilitado_lector TINYINT DEFAULT = 1,
+    habilitado_lector TINYINT DEFAULT 1,
     CONSTRAINT pk_lector PRIMARY KEY (id_lector),
     CONSTRAINT fk_lector_direccion FOREIGN KEY (id_direccion) REFERENCES direccion(id_direccion),
     CONSTRAINT fk_lector_biblioteca FOREIGN KEY (id_biblioteca) REFERENCES biblioteca(id_biblioteca)
@@ -81,9 +81,9 @@ CREATE TABLE IF NOT EXISTS prestamo(
     id_prestamo INT NOT NULL,
     id_libro INT NOT NULL,
     id_lector INT NOT NULL,
-    fecha_prestamo DATE NOT NULL,
-    plazo_devolucion INT NOT NULL,
-    fecha_entrega DATE NOT NULL,
+    fecha_prestamo DATETIME NOT NULL,
+    plazo_devolucion DATETIME NOT NULL,
+    fecha_entrega DATETIME NULL,
     CONSTRAINT pk_prestamo PRIMARY KEY (id_prestamo),
     CONSTRAINT fk_prestamo_libro FOREIGN KEY (id_libro) REFERENCES libro(id_libro),
     CONSTRAINT fk_prestamo_lector FOREIGN KEY (id_lector) REFERENCES lector(id_lector)
