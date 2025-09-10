@@ -1,5 +1,6 @@
 class Categoria():
-    def __init__(self,id_categoria=0,categoria='',descripcion_c=''):
+    def __init__(self,id_categoria=0,categoria='',descripcion_c='', habilitado=True):
         self.id_categoria = id_categoria
         self.categoria = categoria
         self.descripcion_c = descripcion_c
+        self.habilitado = habilitado
